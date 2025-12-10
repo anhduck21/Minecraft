@@ -21,7 +21,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// ⚠️ Railway không cần HTTPS dev cert, nên có thể bỏ dòng này
+// app.UseHttpsRedirection();
+
 app.UseAuthorization();
 app.MapControllers();
-app.Run();
+
+// ✅ Lắng nghe trên tất cả địa chỉ, cổng 5000
+app.Run("http://0.0.0.0:5000");
